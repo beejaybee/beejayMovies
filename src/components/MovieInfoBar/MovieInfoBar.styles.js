@@ -27,6 +27,7 @@ export const Content = styled.div`
         border-radius: 20px;
         margin: 0 2px;
         flex: 1;
+        color: var(--white);
 
         :first-child {
             margin-left: 0;
