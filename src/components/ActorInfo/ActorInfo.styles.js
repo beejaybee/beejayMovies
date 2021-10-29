@@ -23,7 +23,7 @@ export const Content = styled.div`
     display: flex;
     max-width: var(--maxWidth);
     margin: 0 auto;
-    background: rgba(0,0,0, 0,7);
+    background: rgba(0,0,0,0.7);
     border-radius: 20px;
 
     @media screen  and (max-width: 768px) {

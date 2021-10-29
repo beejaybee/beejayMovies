@@ -15,28 +15,21 @@ import Spinner from './Spinner';
 import SearchBar from './SearchBar';
 import Button from './Button';
 
- //Hooks
-import {useHomeFetch} from '../hooks/useHomeFetch';
-
  //image
 import NoImage from '../images/no_image.jpg';
 
+// Hook
+import { useHomeFetch } from '../hooks/useHomeFetch';
 const Home = () => {
-    const { 
-        state,
-        loading, 
-        error, 
-        searchTerm, 
-        setSearchTerm,
-        setIsLoadingMore
+    const {
+      state,
+      loading,
+      error,
+      searchTerm,
+      setSearchTerm,
+      setIsLoadingMore
     } = useHomeFetch();
 
-    if(error) {
-        return (
-            <div>Something went wrong...</div>
-        )
-    }
-    console.log(state.results)
 
     const renderHeroImage = () => {
         return !searchTerm && state.results[0] ? 
@@ -62,31 +55,39 @@ const Home = () => {
             movieId={movie.id}
             />
         ))
-    )
+    );
 
     const renderButton = () => (
         state.page < state.total_pages && !loading && (
             <Button
             text='Load More'
-            callback={()=> setIsLoadingMore(true)}
+            callback={setIsLoadingMore}
             />
         )
     )
 
-    return (
-        <>
-            {renderHeroImage()}
+        if(error) {
+            return (
+                <div>Something went wrong...</div>
+            )
+        }
+    
 
-            <SearchBar setSearchTerm={setSearchTerm} />
+        return (
+            <>
+                {renderHeroImage()}
 
-            <Grid header={searchTerm ? 'Search Results' : 'Popular movies'}>
-                {renderGridChildren()}
-            </Grid>
+                <SearchBar setSearchTerm={setSearchTerm} />
 
-            {loading && <Spinner />}
-            {renderButton()}
-        </>
-    )
+                <Grid header={searchTerm ? 'Search Results' : 'Popular movies'}>
+                    {renderGridChildren()}
+                </Grid>
+
+                {loading && <Spinner />}
+                {renderButton()}
+            </>
+    );
+    
 }
 
 

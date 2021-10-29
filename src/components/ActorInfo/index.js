@@ -15,7 +15,7 @@ import {Wrapper, Content, Text} from './ActorInfo.styles';
 
 const ActorInfo = ({actor}) => (
     <Wrapper>
-        <Content profile={actor.profile_path}>
+        <Content>
             <Thumb
             image={
                 actor.profile_path
@@ -31,8 +31,8 @@ const ActorInfo = ({actor}) => (
 
                 <div className='popularity_rating'>
                     <div>
-                    <h3>POPULARITY</h3>
-                    <div className="popularity">{actor.popularity}</div>
+                        <h3>POPULARITY</h3>
+                        <div className="popularity">{actor.popularity}</div>
                     </div>
 
                     <div className="birthday">
